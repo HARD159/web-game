@@ -2,12 +2,12 @@
 
 ### Установка нужных библиотек из дериктории app
 ```sh
-    npm app install
+    npm install
 ```
 
 ### Запуск сервера из дериктории app
 ```sh
-    npm  app run start
+    npm run start
 ```
 
 ### Главная страница с index.html
