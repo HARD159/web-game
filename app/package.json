@@ -11,7 +11,7 @@
   },
   "scripts": {
     "node_start": "node ./src/server/main.js",
-    "start": "nodemon --exec 'npm run node_start'"
+    "start": "nodemon --exec npm run node_start"
   },
   "dependencies": {
     "express": "4.16.1",

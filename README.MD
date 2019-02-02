@@ -1,5 +1,8 @@
 ## Test node js webserver
 
+Build Status
+[![Build Status](https://travis-ci.com/HARD159/web-game.svg?branch=master)](https://travis-ci.com/HARD159/web-game)
+
 ### Установка нужных библиотек из дериктории app
 ```sh
     npm install
@@ -38,3 +41,5 @@ http://localhost:3000/docs?first_name=hi
 ```sh
     docker-compose up
 ```
+
+cd /c/Users/User/Proj/web-game-master/app && npm run node_start  //// run virtual server
