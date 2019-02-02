@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require('express');
 var path = require('path');
 
@@ -7,7 +9,7 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     const indexFilePath = path.resolve(`${__dirname}/../ui/main.html`)
-    console.log(`indexFilePath ${indexFilePath}`);
+    console.log(`main.html at ${indexFilePath}`);
     res.sendFile(indexFilePath);
 })
 
@@ -27,5 +29,5 @@ var server = app.listen(3000, function () {
    var host = server.address().address
    var port = server.address().port
    
-   console.log("Example app listening at http://%s:%s", host, port)
+   console.log(`app running at ${host}: ${port}`)
 })
