@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 
 app.get('/docs', function (req, res) {
    // Prepare output in JSON format
-   response = {
+   var response = {
       first_name:req.query.first_name,
       last_name:req.query.last_name
    };
