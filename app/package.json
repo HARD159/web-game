@@ -1,13 +1,20 @@
 {
-  "name": "docker_web_app",
+  "name": "web-game",
   "version": "1.0.0",
   "description": "Node.js on Docker",
-  "author": "First Last <first.last@example.com>",
-  "main": "server/main.js",
+  "author": "Artur Yakushev",
+  "main": "src/server/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/HARD159/web-game.git",
+    "private": true
+  },
   "scripts": {
-    "start": "node ./src/server/main.js"
+    "node_start": "node ./src/server/main.js",
+    "start": "nodemon --exec 'npm run node_start'"
   },
   "dependencies": {
-    "express": "^4.16.1"
+    "express": "4.16.1",
+    "nodemon": "1.18.9"
   }
 }

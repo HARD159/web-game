@@ -1,20 +1,40 @@
 ## Test node js webserver
 
-### Установка нужных библиотек
+### Установка нужных библиотек из дериктории app
 ```sh
-    npm --prefix ./app install
+    npm app install
 ```
 
-### Запуск сервера
+### Запуск сервера из дериктории app
 ```sh
-    npm  --prefix ./app run start
+    npm  app run start
 ```
 
 ### Главная страница с index.html
 http://localhost:3000/
 
 ### Пример работы с запросом и ответ не html,а json-обьект
-http://localhost:3000/test_get?first_name=hi 
+http://localhost:3000/docs?first_name=hi 
 выдаст 
 `{"first_name":"hi"}`
 
+
+### Docker
+
+#### build
+
+```sh
+    docker build app -f app/Dockerfile -t web-game 
+```
+
+#### run
+
+```sh
+    docker run --rm -p 3000:3000 web-game
+```
+
+#### run by docker-compose
+
+```sh
+    docker-compose up
+```
