@@ -3,7 +3,7 @@
 
 /* 
 Как деплоить:
-SERVER_IP=188.166.88.166  SERVER_USER=root node <путь к deploy.js> 
+SERVER_IP=188.166.47.208  SERVER_USER=root node <путь к deploy.js> 
 
 */
 const { SERVER_IP, SERVER_USER, SERVER_SSH_KEY } = process.env;
@@ -14,6 +14,7 @@ if (!SERVER_IP && !SERVER_USER) {
 
 const exec = require('child_process').exec;
 const path = require('path');
+const os = require('os');
 const fs = require('fs').promises;
 let FILE_LOGGER = null;
 
@@ -28,6 +29,9 @@ const runCommand = async (cmd, cwd) => {
         const options = cwd ? { cwd } : null;
 
         exec(cmd, options, (error, stdout, stderr) => {
+            stderr = stderr.toString()
+            stdout = stdout.toString()
+            
             if (error) {
                 if (stderr) {
                     log(`stderr ${stderr}`)
@@ -46,7 +50,7 @@ const remoteCall = async (cmd) => {
     const remoteSSHCommand = `ssh ${SERVER_USER}@${SERVER_IP} ${keyFile} "${cmd}"`;
     const res = await runCommand(remoteSSHCommand);
     if (res) {
-        await log('REMOTE STDOUT\n', res);
+        await log(`REMOTE STDOUT${os.EOL}`, res);
     }
     return res;
 };
@@ -66,7 +70,7 @@ const log = async (...args) => {
     
     if (FILE_LOGGER){
         console.log(data)
-        await FILE_LOGGER.write(`\n${timeString} ${String(data)}`) 
+        await FILE_LOGGER.write(`${os.EOL}${timeString} ${String(data)}`) 
     } else {
         console.log('WARN: LOGGER IS NOT INIT', data)
     }
@@ -74,6 +78,7 @@ const log = async (...args) => {
 
 const initLogger = async () => {
     FILE_LOGGER = await fs.open(LOG_FILE_PATH, 'a+');
+    await log(`init logger`);
 }
 
 const deployCode = async () => {
@@ -88,7 +93,7 @@ const run = async () => {
         await initLogger()
         await deployCode();
         await log('DEPLOYED!')
-        await log(`\nOpen browser at ${SERVER_IP}:3000\n`)
+        await log(`${os.EOL}Open browser at http://${SERVER_IP}:3000${os.EOL}`)
     } catch (error) {
         await log('FAILED!');
         await log(error);
