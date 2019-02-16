@@ -42,4 +42,5 @@ http://localhost:3000/docs?first_name=hi
     docker-compose up
 ```
 
-cd /c/Users/User/Proj/web-game-master/app && npm run node_start  //// run virtual server
+### run virtual server
+cd /c/Users/User/Proj/web-game-master/app && npm run node_start
